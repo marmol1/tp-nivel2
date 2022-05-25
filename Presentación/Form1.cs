@@ -12,6 +12,7 @@ namespace Presentación
 {
     public partial class frmCatalogo : Form
     {
+        private List<Articulo> listaArticulo;
         public frmCatalogo()
         {
             InitializeComponent();
@@ -20,7 +21,28 @@ namespace Presentación
         private void frmCatalogo_Load(object sender, EventArgs e)
         {
             CatalogoNegocio negocio = new CatalogoNegocio();
-            dgvArticulos.DataSource = negocio.Listar();
+            listaArticulo = negocio.Listar();
+            dgvArticulos.DataSource = listaArticulo;
+            cargarImagen(listaArticulo[0].UrlImagen);
+        }
+
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            cargarImagen(seleccionado.UrlImagen);
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbxArticulo.Load(imagen);
+            }
+            catch (Exception)
+            {
+
+                pbxArticulo.Load("https://www.palomacornejo.com/wp-content/uploads/2021/08/no-image.jpg");
+            }
         }
     }
 }
