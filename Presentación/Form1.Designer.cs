@@ -62,6 +62,7 @@
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.dgvArticulos);
             this.Name = "frmCatalogo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Catálogo";
             this.Load += new System.EventHandler(this.frmCatalogo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();

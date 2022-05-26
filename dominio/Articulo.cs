@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Presentación
+namespace dominio
 {
-    internal class Articulo
+    public class Articulo
     {
         public string CodigoProducto { get; set; }
         public string Nombre { get; set; }
@@ -16,6 +16,5 @@ namespace Presentación
         public Marca Marca { get; set; }
         public decimal Precio { get; set; }
         
-
     }
 }
