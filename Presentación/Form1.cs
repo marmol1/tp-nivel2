@@ -23,6 +23,7 @@ namespace Presentación
             CatalogoNegocio negocio = new CatalogoNegocio();
             listaArticulo = negocio.Listar();
             dgvArticulos.DataSource = listaArticulo;
+            dgvArticulos.Columns[3].Visible = false;
             cargarImagen(listaArticulo[0].UrlImagen);
         }
 
@@ -44,5 +45,6 @@ namespace Presentación
                 pbxArticulo.Load("https://www.palomacornejo.com/wp-content/uploads/2021/08/no-image.jpg");
             }
         }
+
     }
 }

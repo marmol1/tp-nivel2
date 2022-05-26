@@ -19,7 +19,7 @@ namespace Presentación
             {
                 conexion.ConnectionString = "server =.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select Codigo, Nombre, Descripcion, ImagenUrl, Precio from ARTICULOS";
+                comando.CommandText = "select Codigo, Nombre, A.Descripcion , ImagenUrl, C.Descripcion Categoria, M.Descripcion Marca, Precio from ARTICULOS A, CATEGORIAS C, MARCAS M where M.Id = A.IdMarca AND C.Id = A.IdCategoria";
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -32,7 +32,12 @@ namespace Presentación
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Descripcion"];
                     aux.UrlImagen = (string)lector["ImagenUrl"];
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Descripcion = (string)lector["Categoria"];
+                    aux.Marca = new Marca();
+                    aux.Marca.Descripcion = (string)lector["Marca"];
                     aux.Precio = (decimal)lector["Precio"];
+                    
 
                     lista.Add(aux);
                 }
