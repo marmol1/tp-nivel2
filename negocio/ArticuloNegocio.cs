@@ -8,7 +8,7 @@ using dominio;
 
 namespace negocio
 {
-    public class CatalogoNegocio
+    public class ArticuloNegocio
     {
         public List<Articulo> Listar()
         {
@@ -52,7 +52,27 @@ namespace negocio
                 throw ex;
             }
 
-             
+           
+        }
+
+        public void agregar(Articulo nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, Precio) values (" + nuevo.CodigoProducto + ", '" + nuevo.Nombre + "', '" + nuevo.Descripcion+ "', " + nuevo.Precio + ")");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
     }
 }

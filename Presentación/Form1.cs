@@ -22,7 +22,7 @@ namespace Presentación
 
         private void frmCatalogo_Load(object sender, EventArgs e)
         {
-            CatalogoNegocio negocio = new CatalogoNegocio();
+            ArticuloNegocio negocio = new ArticuloNegocio();
             listaArticulo = negocio.Listar();
             dgvArticulos.DataSource = listaArticulo;
             dgvArticulos.Columns[3].Visible = false;
@@ -48,5 +48,10 @@ namespace Presentación
             }
         }
 
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAltaArticulo alta = new frmAltaArticulo();
+            alta.ShowDialog();
+        }
     }
 }
